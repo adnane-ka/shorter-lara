@@ -117,4 +117,45 @@ dd(DB::getQueryLog());
 User::insertGetId(['name' ,'jhon doe']);
 ```
 
+--- 
+### Multiple conditions !
+```php 
+public function productsOfToday()
+{
+    return User::where([
+      ['role' ,'=' ,'admin'],
+      ['created_at' ,'=', today()]
+    ])->get();
+}
+```
+
+---
+
+### WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime 
+```php 
+$usersOfThisYear = WhereYear('created_at' ,today()->year)->get();
+$usersOfThisMonth = WhereYear('created_at' ,today()->month)->get();
+$usersOfThisDay = WhereYear('created_at' ,today()->day)->get();
+```
+
+---
+### loops varriables
+```php 
+@foreach($items as $item)
+<tr>
+  <td> a unique number per this row is : {{$loop->iteration}} </td>
+  <td> @if($loop->first) thats the first item @endif </td>
+  <td> @if($loop->last) thats the last item @endif </td>
+</tr>  
+@endforeach
+```
+
+### provide your own "404" procedure
+```php 
+Route::fallback(function(){
+  // 
+});
+```
+
+
 
