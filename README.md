@@ -69,13 +69,52 @@ $newTask = $task->replicate();
 $newTask->save();
 ```
 ---
-### whereNull ?
+### whereNull & whereNotNull
 instead of :
 ```php
 $article = Article::where('tags' ,null)->get(); 
+$article = Article::where('tags' ,'!=',null)->get(); 
 ```
 you can : 
 ```php 
 $article = Article::whereNull('tags')->get();
+$article = Article::whereNotNull('tags')->get(); 
 ```
 ---
+### new password validation rules with laravel 8.39!
+```php 
+use Illuminate\Validation\Rules\Password;
+
+public function rules()
+{
+    rules = [
+        'password' => [
+            'confirmed',
+            Password::min(8)
+            ->letters() // require at least one charchter 
+            ->mixedCase() // require at least one uppercase & one lower case
+            ->numbers() // require at least one number 
+            ->symbols() // require at least one symbol
+            ->uncomprimised() // unsure that password isn't comprimissed
+        ],
+    ];
+}
+```
+
+--- 
+### enable query Logging & display SQL statement
+```php 
+DB::enableQueryLog();
+
+User::where('name' ,'lara-shorter')->get()
+
+dd(DB::getQueryLog()); 
+```
+
+---
+### insert & get ID !
+```php 
+User::insertGetId(['name' ,'jhon doe']);
+```
+
+
