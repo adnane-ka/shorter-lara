@@ -14,6 +14,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime
 * Get a Table's Column Names !
 * Check if a property has been changed before !
+* Get All Record but not null ones !
 
 ##### Blade
 * loops varriables
@@ -26,7 +27,8 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * enable query Logging & display SQL statement
 
 ##### Routing 
-* provide your own "404" procedure
+* Provide your own "404" procedure
+* Create A Custom Route File
 
 ##### Validation 
 * new password validation rules with laravel 8.39!
@@ -145,6 +147,11 @@ class YourModel extends Eloquent {
 @if($user->isDirty('email'))
 <h2> The user email was changed before ! </h2>
 @endif
+```
+
+### Get All Record but not null ones !
+```php 
+$products = Products::where('is_available is null')->get();
 ```
 
 ---
@@ -275,6 +282,29 @@ Route::fallback(function(){
 });
 ```
 
+### Create A Custom Route File
+```php 
+# in App/Providers/RouteServiceProvider.php;
+    
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
+
+        Route::middleware('admin')
+        ->prefix('admin')
+        ->namespace($this->namespace.'\Admin')
+        ->group(base_path('routes/admin.php'));
+    }
+```
 ---
 ## Validation 
 
