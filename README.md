@@ -20,6 +20,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Easy drop downs with laravel eloquent
 * Easy & Cleaner HTML Codes With Laravel HTML Generator !
 * Use forelse loops instead of foreach
+* Blade directives that you did not know about
 
 ##### Query Builder  
 * enable query Logging & display SQL statement
@@ -216,6 +217,36 @@ This is item {{ $item->id }}
 No items found.
 
 @endforelse
+```
+
+### Blade directives that you did not know about
+
+```php 
+# @json
+    <script>
+    let users = @json($users); // convert a collection to json 
+    </script>
+
+# @stack & @push 
+
+    // in parent view
+    @stack('scripts') 
+    
+    // in child view 
+    @push('scripts')
+    <script>
+    alert('Hey Im a stacked Script!');
+    </script>
+    @endpush
+
+# @inject 
+
+    @inject('metrics' ,'App\Services\MetricServices')
+
+    {{ $metrics->someMethod() }}
+
+# @includeWhen 
+    @includeWhen($someCondition ,'path\to\someview')
 ```
 ---
 ## Query Builder
