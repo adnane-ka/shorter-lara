@@ -2,20 +2,24 @@
 a curated list for laravel tricks & tips to write a shorter & cleaner code with laravel built-in features . 
 
 ##### Laravel Eloquent 
-* customize model table names 
-* increments & decrements 
-* first or create
-* find multiple entries
-* whereProperty
-* replicate a row !
-* whereNull & whereNotNull 
-* insert & get ID !
+* Customize model table names 
+* Increments & decrements 
+* First or create
+* Find multiple entries
+* WhereProperty
+* Replicate a row !
+* WhereNull & whereNotNull 
+* Insert & get ID !
 * Multiple conditions !
 * WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime
+* Get a Table's Column Names !
+* Check if a property has been changed before !
 
 ##### Blade
 * loops varriables
 * Easy drop downs with laravel eloquent
+* Easy & Cleaner HTML Codes With Laravel HTML Generator !
+* Use forelse loops instead of foreach
 
 ##### Query Builder  
 * enable query Logging & display SQL statement
@@ -104,7 +108,6 @@ $article = Article::whereNotNull('tags')->get();
 User::insertGetId(['name' ,'jhon doe']);
 ```
 
---- 
 ### Multiple conditions !
 ```php 
 public function productsOfToday()
@@ -116,8 +119,6 @@ public function productsOfToday()
 }
 ```
 
----
-
 ### WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime 
 ```php 
 $usersOfThisYear = WhereYear('created_at' ,today()->year)->get();
@@ -125,7 +126,25 @@ $usersOfThisMonth = WhereYear('created_at' ,today()->month)->get();
 $usersOfThisDay = WhereYear('created_at' ,today()->day)->get();
 ```
 
+### Get a Table's Column Names !
+```php 
+class YourModel extends Eloquent {
+    
+    public function getTableColumns() {
+        return $this->getConnection()
+        ->getSchemaBuilder()
+        ->getColumnListing($this->getTable());
+    }
+    
+}
+```
 
+### Check if a property has been changed before ! 
+```php 
+@if($user->isDirty('email'))
+<h2> The user email was changed before ! </h2>
+@endif
+```
 
 ---
 ## Blade
@@ -159,6 +178,45 @@ $categories = Category::lists('title', 'id');
 @endforeach
 ```
 
+### Easy & Cleaner HTML Codes With Laravel HTML Generator !
+```php 
+# Generating a link to external Javascript
+{{ HTML::script('js/app.min.js'); }}
+
+# Generating a link to external stylesheet
+{{ HTML::style('css/style.css'); }}
+
+# Generating image tag
+{{ HTML::image('img/img1.jpg'); }}
+
+# Generating link tag
+{{ HTML::link('http://github.com','Lara-shorter', ['id'=>'myLink']); }}
+
+# Generating obsufscated mailto tag
+{{ HTML::mailto('myemail@mail.com','Some person', ['id'=>'myEmail']); }}
+
+# Generating HTML ordered list
+{{ HTML::ol(['list item', 'list item', 'list item']); }}
+
+# Generating HTML unordered list
+{{ HTML::ul(['list item', 'list item', 'list item']); }}
+
+# Generating HTML unordered list with nested elements
+{{ HTML::ul(['list item', 'list item' => ['list item','list item'], 'list item']); }}
+```
+
+### Use forelse loops instead of foreach
+```php 
+@forelse ($items as $item)
+
+This is item {{ $item->id }}
+
+@empty
+
+No items found.
+
+@endforelse
+```
 ---
 ## Query Builder
 
