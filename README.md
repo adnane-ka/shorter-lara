@@ -1,6 +1,8 @@
 # shorter-lara 
 a curated list for laravel tricks & tips to write a shorter & cleaner code with laravel built-in features . 
 
+> check the Javascript Version of this file [here](https://github.com/adnane-ka/shorter-js) .
+
 ##### Laravel Eloquent 
 * Customize model table names 
 * Increments & decrements 
