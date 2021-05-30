@@ -1,4 +1,4 @@
-# lara-shorter 
+# shorter-lara 
 a curated list for laravel tricks & tips to write a shorter & cleaner code with laravel built-in features . 
 
 ##### Laravel Eloquent 
