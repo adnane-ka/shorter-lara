@@ -18,6 +18,9 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Check if a property has been changed before !
 * Get All Record but not null ones !
 * More convenient DD
+* Prevent Updating !
+* Retrieve Random Rows
+* Get only rows that have child rows !
 
 ##### Blade
 * loops varriables
@@ -36,6 +39,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 
 ##### Validation 
 * new password validation rules with laravel 8.39!
+* Use this instead of request->all()
 
 ##### Other 
 * UUID instead of auto increment !
@@ -170,6 +174,34 @@ dd($users);
 // you can 
 $users = User::where('name', 'Taylor')->get()->dd();
 ```
+
+### Prevent Updating !
+```php 
+class Post extends Eloquent
+{
+	protected static function boot()
+	{
+		parent::boot();
+
+		static::updating(function($model)
+		{
+			return false;
+		});
+	}
+}
+```
+
+### Retrieve Random Rows
+```php 
+$users = User::orderByRaw('RAND()')->take(10)->get();
+```
+
+### Get only rows that have child rows !
+```php 
+$categories = Category::with('products')->has('products')->get();
+```
+
+
 ---
 ## Blade
 
