@@ -48,26 +48,6 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Arrays as Collections !
 * Grouped Collections
 
-### Arrays as Collections !
-```php 
-$users_collection = new \Illuminate\Support\Collection([
-	['name' => 'jhon doe', 'email' => 'jhondoe@doe.do'],
-	['name' => 'will smith', 'email' => 'willsimth@will.sm'],
-]);
-
-// or 
-$users_collection = collect([
-	['name' => 'jhon doe', 'email' => 'jhondoe@doe.do'],
-	['name' => 'will smith', 'email' => 'willsimth@will.sm'],
-]);
-```
-
-### Grouped Collections
-```php 
-$collection = Person::all();
-
-$grouped = $collection->groupBy('type');
-```
 ---
 ## Laravel Eloquent 
 
@@ -443,4 +423,26 @@ Schema::create('users', function (Blueprint $table) {
 ### Missing the old SQL way?
 ```php 
 DB::statement('DROP TABLE users');
+```
+
+
+### Arrays as Collections !
+```php 
+$users_collection = new \Illuminate\Support\Collection([
+	['name' => 'jhon doe', 'email' => 'jhondoe@doe.do'],
+	['name' => 'will smith', 'email' => 'willsimth@will.sm'],
+]);
+
+// or 
+$users_collection = collect([
+	['name' => 'jhon doe', 'email' => 'jhondoe@doe.do'],
+	['name' => 'will smith', 'email' => 'willsimth@will.sm'],
+]);
+```
+
+### Grouped Collections
+```php 
+$collection = Person::all();
+
+$grouped = $collection->groupBy('type');
 ```
