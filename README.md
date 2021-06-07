@@ -17,6 +17,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Get a Table's Column Names !
 * Check if a property has been changed before !
 * Get All Record but not null ones !
+* More convenient DD
 
 ##### Blade
 * loops varriables
@@ -24,6 +25,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Easy & Cleaner HTML Codes With Laravel HTML Generator !
 * Use forelse loops instead of foreach
 * Blade directives that you did not know about
+* Add Parameters to Pagination Links
 
 ##### Query Builder  
 * enable query Logging & display SQL statement
@@ -35,6 +37,10 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 ##### Validation 
 * new password validation rules with laravel 8.39!
 
+##### Other 
+* UUID instead of auto increment !
+* Missing the old SQL way?
+* Request: has any
 
 ---
 ## Laravel Eloquent 
@@ -156,6 +162,14 @@ class YourModel extends Eloquent {
 $products = Products::where('is_available is null')->get();
 ```
 
+### More convenient DD
+```php 
+// Instead of
+$users = User::where('name', 'Taylor')->get();
+dd($users);
+// you can 
+$users = User::where('name', 'Taylor')->get()->dd();
+```
 ---
 ## Blade
 
@@ -257,7 +271,27 @@ No items found.
 # @includeWhen 
     @includeWhen($someCondition ,'path\to\someview')
 ```
+### Add Parameters to Pagination Links
+```php 
+{{ $users->appends(['sort' => 'votes'])->links() }}
+
+{{ $users->withQueryString()->links() }}
+
+{{ $users->fragment('foo')->links() }}
+```
 ---
+
+
+
+
+
+
+
+
+
+
+
+
 ## Query Builder
 
 
@@ -332,3 +366,27 @@ public function rules()
 
 
 
+---
+## Other  
+
+### Request: has any
+```php
+public function store(Request $request) 
+{
+    if ($request->hasAny(['api_token', 'access_token' ,'auth_token'])) {
+        echo 'We have Token passed';
+    } else {
+        echo 'No Token parameter';
+    }
+} 
+```
+### UUID instead of auto increment !
+```php 
+Schema::create('users', function (Blueprint $table) {
+    $table->uuid('id')->unique();
+});
+```
+### Missing the old SQL way?
+```php 
+DB::statement('DROP TABLE users');
+```
