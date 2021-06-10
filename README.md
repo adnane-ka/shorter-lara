@@ -48,6 +48,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Request: has any
 * Arrays as Collections !
 * Grouped Collections
+* abort_if & abort_unless
 
 ##### Testing 
 * For testing you can check this [repo](https://github.com/adnane-ka/tdd-tips-in-laravel).
@@ -478,4 +479,21 @@ $users_collection = collect([
 $collection = Person::all();
 
 $grouped = $collection->groupBy('type');
+```
+
+### abort_if & abort_unless
+instead of 
+```php 
+if ($order) {
+  abort(404);
+}
+elseif(!$order){
+  abort(401);
+}
+```
+you can 
+```php 
+abort_if($order ,404);
+
+abort_unless($order ,401);
 ```
