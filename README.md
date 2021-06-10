@@ -49,6 +49,9 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Arrays as Collections !
 * Grouped Collections
 
+##### Testing 
+* For testing you can check this [repo](https://github.com/adnane-ka/tdd-tips-in-laravel).
+
 ---
 ## Laravel Eloquent 
 
