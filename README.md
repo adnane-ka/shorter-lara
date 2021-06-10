@@ -36,6 +36,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 ##### Routing 
 * Provide your own "404" procedure
 * Create A Custom Route File
+* Did you know About Route::where() ?
 
 ##### Validation 
 * new password validation rules with laravel 8.39!
@@ -374,6 +375,35 @@ Route::fallback(function(){
         ->namespace($this->namespace.'\Admin')
         ->group(base_path('routes/admin.php'));
     }
+```
+
+### Did you know About Route::where() ?
+Assume that you want to make sure that you're receving only integer ids passed from route . 
+
+instead of 
+```php 
+Route::get('/api/item/{id}' ,[ItemsController::class ,'show']);
+
+...
+class ItemsController extends Controller {
+    public function show($id)
+    {
+
+        if(!is_inetegr($id)){
+            abort(404);
+        }
+
+        // some code
+
+    }
+}
+```
+
+you can 
+
+```php 
+Route::get('/api/item/{id}' ,[ItemsController::class ,'show'])
+->where('id', '$[0-9]+^');
 ```
 ---
 ## Validation 
