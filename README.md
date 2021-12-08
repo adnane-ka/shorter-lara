@@ -8,29 +8,29 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * [Increments and decrements](#Increments-and-decrements)
 * [First or create](#first-or-create)
 * [Find multiple entries](#find-multiple-entries)
-* [WhereProperty & WhereNotProperty](#whereproperty--wherenotproperty)
-* [Replicate a row !](#replicate-a-row-)
-* [WhereNull & whereNotNull](#wherenull--wherenotnull)
-* [Insert & get ID !](#insert--get-id-)
-* [Multiple conditions !](#multiple-conditions-)
+* [WhereProperty and WhereNotProperty](#whereproperty-and-wherenotproperty)
+* [Replicate a row](#replicate-a-row)
+* [WhereNull and whereNotNull](#wherenull-and-wherenotnull)
+* [Insert and get ID](#insert-and-get-id)
+* [Multiple conditions](#multiple-conditions)
 * [WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime](#wheredate--whereyear--wheremonth--whereday--wheretime)
-* [Get a Table's Column Names !](#get-a-tables-column-names-)
-* [Check if a property has been changed before !](#check-if-a-property-has-been-changed-before-)
-* [Get All Record but not null ones !](#get-all-record-but-not-null-ones-)
+* [Get a Table's Column Names](#get-a-tables-column-names)
+* [Check if a property has been changed before](#check-if-a-property-has-been-changed-before)
+* [Get All Record but not null ones](#get-all-record-but-not-null-ones)
 * [More convenient DD](#more-convenient-dd)
-* [Prevent Updating !](#prevent-updating-)
+* [Prevent Updating](#prevent-updating)
 * [Retrieve Random Rows](#retrieve-random-rows)
-* [Get only rows that have child rows !](#get-only-rows-that-have-child-rows-)
+* [Get only rows that have child rows](#get-only-rows-that-have-child-rows)
 * [withCount](#withcount)
 
 ##### Blade
-* [Better way to create dropdown menus !](#better-way-to-create-dropdown-menus-)
+* [Better way to create dropdown menus](#better-way-to-create-dropdown-menus)
 * [loops varriables](#loops-varriables)
-* [Easy & Cleaner HTML Codes With Laravel HTML Generator !](#easy--cleaner-html-codes-with-laravel-html-generator-)
+* [Easy and cleaner HTML codes with Laravel HTML generator](#easy-cleaner-html-codes-with-laravel-html-generator)
 * [Use forelse loops instead of foreach](#use-forelse-loops-instead-of-foreach)
 * [Blade directives that you did not know about](#blade-directives-that-you-did-not-know-about)
 * [Add Parameters to Pagination Links](#add-parameters-to-pagination-links)
-* [Custom blade directives ](#custom-blade-directives)
+* [Custom blade directives](#custom-blade-directives)
 
 ##### Query Builder  
 * [enable query Logging & display SQL statement](#enable-query-logging--display-sql-statement)
@@ -38,11 +38,11 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 ##### Routing 
 * [Provide your own "404" procedure](#provide-your-own-404-procedure)
 * [Create A Custom Route File](#create-a-custom-route-file)
-* [Did you know About Route::where() ?](#did-you-know-about-routewhere-)
+* [Did you know About Route::where()](#did-you-know-about-routewhere)
 * [more convenient way for resource API](#more-convenient-way-for-resource-API)
 
 ##### Validation 
-* [new password validation rules with laravel 8.39!](#new-password-validation-rules-with-laravel-839)
+* [new password validation rules with laravel 8.39](#new-password-validation-rules-with-laravel-839)
 
 ##### Other 
 * [Request: has any](#new-password-validation-rules-with-laravel-839)
@@ -99,7 +99,7 @@ $user = User::firstOrCreate(['email' => $email]);
 User::find([1,2,4]);
 ```
 
-### whereProperty & WhereNotProperty
+### WhereProperty and WhereNotProperty
 instead of :
 ```php 
 User::where('approved' ,true)->get()
@@ -112,14 +112,14 @@ User::whereApproved(true);
 User::whereNotApproved(true);
 ```
 
-### replicate a row !
+### Replicate a row
 ```php 
 $task = Tasks::find(1);
 $newTask = $task->replicate();
 $newTask->save();
 ```
 
-### whereNull & whereNotNull
+### WhereNull and whereNotNull
 instead of :
 ```php
 $article = Article::where('tags' ,null)->get(); 
@@ -130,12 +130,12 @@ you can :
 $article = Article::whereNull('tags')->get();
 $article = Article::whereNotNull('tags')->get(); 
 ```
-### insert & get ID !
+### Insert and get ID
 ```php 
 User::insertGetId(['name' ,'jhon doe']);
 ```
 
-### Multiple conditions !
+### Multiple conditions
 ```php 
 public function productsOfToday()
 {
@@ -153,7 +153,7 @@ $usersOfThisMonth = WhereYear('created_at' ,today()->month)->get();
 $usersOfThisDay = WhereYear('created_at' ,today()->day)->get();
 ```
 
-### Get a Table's Column Names !
+### Get a Table's Column Names
 ```php 
 class YourModel extends Eloquent {
     
@@ -166,14 +166,14 @@ class YourModel extends Eloquent {
 }
 ```
 
-### Check if a property has been changed before ! 
+### Check if a property has been changed before 
 ```php 
 @if($user->isDirty('email'))
 <h2> The user email was changed before ! </h2>
 @endif
 ```
 
-### Get All Record but not null ones !
+### Get All Record but not null ones
 ```php 
 $products = Products::where('is_available is null')->get();
 ```
@@ -187,7 +187,7 @@ dd($users);
 $users = User::where('name', 'Taylor')->get()->dd();
 ```
 
-### Prevent Updating !
+### Prevent Updating
 ```php 
 class Post extends Eloquent
 {
@@ -208,7 +208,7 @@ class Post extends Eloquent
 $users = User::orderByRaw('RAND()')->take(10)->get();
 ```
 
-### Get only rows that have child rows !
+### Get only rows that have child rows
 ```php 
 $categories = Category::with('products')->has('products')->get();
 ```
@@ -232,7 +232,7 @@ $categories = Categories::withCount('products')->get();
 
 
 
-### Better way to create dropdown menus !
+### Better way to create dropdown menus
 ```php 
 # controller
 $categories = Category::lists('title', 'id');
@@ -252,7 +252,7 @@ $categories = Category::lists('title', 'id');
 @endforeach
 ```
 
-### Easy & Cleaner HTML Codes With Laravel HTML Generator !
+### Easy and cleaner HTML codes with Laravel HTML generator
 ```php 
 # Generating a link to external Javascript
 {{ HTML::script('js/app.min.js'); }}
@@ -405,7 +405,7 @@ Route::fallback(function(){
     }
 ```
 
-### Did you know About Route::where() ?
+### Did you know About Route::where()
 Assume that you want to make sure that you're receving only integer ids passed from route . 
 
 instead of 
@@ -451,7 +451,7 @@ Route::apiResource('resourceName' ,ResourceController::class);
 ---
 ## Validation 
 
-### new password validation rules with laravel 8.39!
+### new password validation rules with laravel 8.39
 ```php 
 use Illuminate\Validation\Rules\Password;
 
