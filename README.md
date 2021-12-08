@@ -8,7 +8,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Increments & decrements 
 * First or create
 * Find multiple entries
-* WhereProperty
+* WhereProperty & WhereNotProperty
 * Replicate a row !
 * WhereNull & whereNotNull 
 * Insert & get ID !
@@ -97,14 +97,17 @@ $user = User::firstOrCreate(['email' => $email]);
 User::find([1,2,4]);
 ```
 
-### whereProperty 
+### whereProperty & WhereNotProperty
 instead of :
 ```php 
 User::where('approved' ,true)->get()
+# or
+User::where('approved' ,false)->get()
 ```
 you can : 
 ```php 
 User::whereApproved(true);
+User::whereNotApproved(true);
 ```
 
 ### replicate a row !
