@@ -4,53 +4,53 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 > check the Javascript Version of this file [here](https://github.com/adnane-ka/shorter-js) .
 
 ##### Laravel Eloquent 
-* Customize model table names 
-* Increments & decrements 
-* First or create
-* Find multiple entries
-* WhereProperty & WhereNotProperty
-* Replicate a row !
-* WhereNull & whereNotNull 
-* Insert & get ID !
-* Multiple conditions !
-* WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime
-* Get a Table's Column Names !
-* Check if a property has been changed before !
-* Get All Record but not null ones !
-* More convenient DD
-* Prevent Updating !
-* Retrieve Random Rows
-* Get only rows that have child rows !
-* withCount 
+* [Customize model table names](#customize-model-table-names)
+* [Increments and decrements](#Increments-and-decrements)
+* [First or create](#first-or-create)
+* [Find multiple entries](#find-multiple-entries)
+* [WhereProperty & WhereNotProperty](#whereproperty--wherenotproperty)
+* [Replicate a row !](#replicate-a-row-)
+* [WhereNull & whereNotNull](#wherenull--wherenotnull)
+* [Insert & get ID !](#insert--get-id-)
+* [Multiple conditions !](#multiple-conditions-)
+* [WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime](#wheredate--whereyear--wheremonth--whereday--wheretime)
+* [Get a Table's Column Names !](#get-a-tables-column-names-)
+* [Check if a property has been changed before !](#check-if-a-property-has-been-changed-before-)
+* [Get All Record but not null ones !](#get-all-record-but-not-null-ones-)
+* [More convenient DD](#more-convenient-dd)
+* [Prevent Updating !](#prevent-updating-)
+* [Retrieve Random Rows](#retrieve-random-rows)
+* [Get only rows that have child rows !](#get-only-rows-that-have-child-rows-)
+* [withCount](#withcount)
 
 ##### Blade
-* loops varriables
-* Easy drop downs with laravel eloquent
-* Easy & Cleaner HTML Codes With Laravel HTML Generator !
-* Use forelse loops instead of foreach
-* Blade directives that you did not know about
-* Add Parameters to Pagination Links
-* Custom blade directives 
+* [Better way to create dropdown menus !](#better-way-to-create-dropdown-menus-)
+* [loops varriables](#loops-varriables)
+* [Easy & Cleaner HTML Codes With Laravel HTML Generator !](#easy--cleaner-html-codes-with-laravel-html-generator-)
+* [Use forelse loops instead of foreach](#use-forelse-loops-instead-of-foreach)
+* [Blade directives that you did not know about](#blade-directives-that-you-did-not-know-about)
+* [Add Parameters to Pagination Links](#add-parameters-to-pagination-links)
+* [Custom blade directives ](#custom-blade-directives)
 
 ##### Query Builder  
-* enable query Logging & display SQL statement
+* [enable query Logging & display SQL statement](#enable-query-logging--display-sql-statement)
 
 ##### Routing 
-* Provide your own "404" procedure
-* Create A Custom Route File
-* Did you know About Route::where() ?
+* [Provide your own "404" procedure](#provide-your-own-404-procedure)
+* [Create A Custom Route File](#create-a-custom-route-file)
+* [Did you know About Route::where() ?](#did-you-know-about-routewhere-)
+* [more convenient way for resource API](#more-convenient-way-for-resource-API)
 
 ##### Validation 
-* new password validation rules with laravel 8.39!
-* Use this instead of request->all()
+* [new password validation rules with laravel 8.39!](#new-password-validation-rules-with-laravel-839)
 
 ##### Other 
-* UUID instead of auto increment !
-* Missing the old SQL way?
-* Request: has any
-* Arrays as Collections !
-* Grouped Collections
-* abort_if & abort_unless
+* [Request: has any](#new-password-validation-rules-with-laravel-839)
+* [UUID instead of auto increment !](#uuid-instead-of-auto-increment-)
+* [Missing the old SQL way?](#missing-the-old-sql-way)
+* [Arrays as Collections !](#arrays-as-collections-)
+* [Grouped Collections](#grouped-collections)
+* [abort_if & abort_unless](#abort_if--abort_unless)
 
 ##### Testing 
 * For testing you can check this [repo](https://github.com/adnane-ka/tdd-tips-in-laravel).
@@ -66,7 +66,7 @@ class User extends Model
 }
 ```
 
-### increments & decrements 
+### Increments and decrements
 instead of :
 ```php 
 $article = Article::find($article_id);
@@ -433,6 +433,21 @@ you can
 Route::get('/api/item/{id}' ,[ItemsController::class ,'show'])
 ->where('id', '$[0-9]+^');
 ```
+
+### more convenient way for resource API
+instead of:
+```php
+Route::resource('resourceName' ,ResourceController::class)->except([
+    'show',
+    'create',
+    'edit'
+]);
+```
+you can:
+```php
+Route::apiResource('resourceName' ,ResourceController::class);
+```
+
 ---
 ## Validation 
 
