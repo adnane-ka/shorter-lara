@@ -21,6 +21,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Prevent Updating !
 * Retrieve Random Rows
 * Get only rows that have child rows !
+* withCount 
 
 ##### Blade
 * loops varriables
@@ -29,6 +30,7 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 * Use forelse loops instead of foreach
 * Blade directives that you did not know about
 * Add Parameters to Pagination Links
+* Custom blade directives 
 
 ##### Query Builder  
 * enable query Logging & display SQL statement
@@ -211,6 +213,12 @@ $users = User::orderByRaw('RAND()')->take(10)->get();
 $categories = Category::with('products')->has('products')->get();
 ```
 
+### withCount
+assuming that you want to get categories & also show products count for each category
+```php 
+# you can simply do
+$categories = Categories::withCount('products')->get();
+```
 
 ---
 ## Blade
@@ -323,7 +331,20 @@ No items found.
 ```
 ---
 
-
+### Custom blade directives 
+add your custom blade directive in app\providers\AppServiceProvider.php:
+```php
+public function boot()
+{
+    Blade::directive('myMagicDirective', function ($expression) {
+        return "any functionnality can be done to: {$expression}";
+    });
+} 
+``` 
+so ,in any blade file, can use it like:
+```html
+<p>  {{ @myMagicDirective(some params) }} </p>
+```
 
 
 
