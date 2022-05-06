@@ -1,4 +1,6 @@
-##### Laravel Eloquent 
+[back](README.md)
+
+# Laravel Eloquent 
 * [Customize model table names](#customize-model-table-names)
 * [Increments and decrements](#Increments-and-decrements)
 * [First or create](#first-or-create)
@@ -18,10 +20,6 @@
 * [Get only rows that have child rows](#get-only-rows-that-have-child-rows)
 * [withCount](#withcount)
 
-
-
----
-## Laravel Eloquent 
 --------------------------------------
 
 

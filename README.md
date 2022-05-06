@@ -7,15 +7,14 @@ a curated list for laravel tricks & tips to write a shorter & cleaner code with 
 
 ##### [Blade](Blade.md)
 
-##### [Query Builder](Query-Builder.md)  
+##### [Query Builder](Query-Builder.md)
 
 ##### [Routing](Routing.md)
 
-##### [Validation](Validation.md) 
+##### [Validation](Validation.md)
 
 ##### [Request](Request.md)
 
-##### [Other](Other.md) 
+##### [Other](Other.md)
 
-##### [Testing](https://github.com/adnane-ka/tdd-tips-in-laravel) 
-
+##### [Testing](https://github.com/adnane-ka/tdd-tips-in-laravel)

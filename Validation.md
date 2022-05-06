@@ -1,10 +1,8 @@
-#### Validation
+[back](README.md)
+
+# Validation
 * [new password validation rules with laravel 8.39](#new-password-validation-rules-with-laravel-839)
 
-
-
----
-## Validation 
 
 ------------------------------
 ### new password validation rules with laravel 8.39

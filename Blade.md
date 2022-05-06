@@ -1,4 +1,6 @@
-##### Blade
+[back](README.md)
+
+# Blade
 
 * [Better way to create dropdown menus](#better-way-to-create-dropdown-menus)
 * [loops varriables](#loops-varriables)
@@ -8,11 +10,7 @@
 * [Add Parameters to Pagination Links](#add-parameters-to-pagination-links)
 * [Custom blade directives](#custom-blade-directives)
 
-
-## Blade
 ------------------------------------------
-
-
 
 
 

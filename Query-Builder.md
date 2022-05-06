@@ -1,12 +1,8 @@
-##### [Query Builder]
+[back](README.md)
+
+# Query Builder
 
 * [enable query Logging & display SQL statement](#enable-query-logging--display-sql-statement)
-
-
-
-## Query Builder
-
-
 
 
 ------------------------------------------------

@@ -1,4 +1,6 @@
-##### Other 
+[back](README.md)
+
+# Other 
 
 * [UUID instead of auto increment !](#uuid-instead-of-auto-increment-)
 * [Missing the old SQL way?](#missing-the-old-sql-way)
@@ -6,9 +8,6 @@
 * [Grouped Collections](#grouped-collections)
 * [abort_if & abort_unless](#abort_if--abort_unless)
 
-
----
-## Other  
 -----------------------------------------------
 
 ### UUID instead of auto increment !
