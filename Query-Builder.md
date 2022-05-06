@@ -1,12 +1,17 @@
-[back](README.md)
+<div dir="rtl">
 
-# Query Builder
+[عودة](README.md)
 
-* [enable query Logging & display SQL statement](#enable-query-logging--display-sql-statement)
+# باني الاستعلامات
+
+* [تمكين سجل الاستعلام وعرض استعلام SQL](#تمكين-سجل-الاستعلام-وعرض-استعلام-sql)
 
 
 ------------------------------------------------
-### enable query Logging & display SQL statement
+### تمكين سجل الاستعلام وعرض استعلام SQL
+
+<div dir="ltr">
+
 ```php 
 DB::enableQueryLog();
 
@@ -15,3 +20,8 @@ User::where('name' ,'lara-shorter')->get()
 dd(DB::getQueryLog()); 
 ```
 
+</div>
+
+------------------------------------------------
+
+</div>

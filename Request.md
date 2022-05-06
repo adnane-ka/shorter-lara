@@ -1,26 +1,36 @@
-[back](README.md)
+<div dir="rtl">
+
+[عودة](README.md)
 
 
-# Request 
-* [Request: has any](#request-has-any)
-* [Request get valid data](#get-validated)
+# الطلبات - Request 
+* [الطلب يمتلك أيا من كذا وكذا](#الطلب-يمتلك-أيا-من-كذا-وكذا)
+* [جلب البيانات المتحقق منها فقط في المتحكم](#جلب-البيانات-المتحقق-منها-فقط-في-المتحكم)
 
 
 ----------------
-### Request: has any
+### الطلب يمتلك أيا من كذا وكذا
+
+<div dir="ltr">
+
 ```php
 public function store(Request $request) 
 {
     if ($request->hasAny(['api_token', 'access_token' ,'auth_token'])) {
-        echo 'We have Token passed';
+        echo 'نمتلك رمزا مميزا، يمكن تجديد الرمز او الوصول الى المورد';
     } else {
-        echo 'No Token parameter';
+        echo 'لا يوجد اي رمز، اعد التوجيه الى صفحة تسجيل الدخول';
     }
 } 
 ```
 
+</div>
+
 ----------------
-### Get validated
+### جلب البيانات المتحقق منها فقط في المتحكم
+
+<div dir="ltr">
+
 ```php
 /**
  * @param App\Http\MyCustomFormRequest $request 
@@ -30,3 +40,9 @@ public function store(MyCustomFormRequest $request)
     $valid_data = $request->validated();
 }
 ```
+
+</div>
+
+----------------
+
+</div>

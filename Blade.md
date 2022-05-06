@@ -1,14 +1,16 @@
-[back](README.md)
+<div dir="rtl">
 
-# Blade
+[عودة](README.md)
 
-* [Better way to create dropdown menus](#better-way-to-create-dropdown-menus)
-* [loops varriables](#loops-varriables)
-* [Easy and cleaner HTML codes with Laravel HTML generator](#easy-cleaner-html-codes-with-laravel-html-generator)
-* [Use forelse loops instead of foreach](#use-forelse-loops-instead-of-foreach)
-* [Blade directives that you did not know about](#blade-directives-that-you-did-not-know-about)
-* [Add Parameters to Pagination Links](#add-parameters-to-pagination-links)
-* [Custom blade directives](#custom-blade-directives)
+# ملفات العرض - Blade
+
+* [طريقة أحسن لإنشاء قوائم منسدلة](#طريقة-أحسن-لإنشاء-قوائم-منسدلة)
+* [متغيرات الحلقات](#متغيرات-الحلقات)
+* [شيفرة أنظف مع مولد الـ HTML](#شيفرة-أنظف-مع-مولد-الـ-html)
+* [حلقات forelse بدلا عن foreach](#حلقات-forelse-بدلا-عن-foreach)
+* [متغيرات قالب لا غنى لك عنها](#متغيرات-قالب-لا-غنى-لك-عنها)
+* [اضافة معاملات مخصصة لروابط التصفيح](#اضافة-معاملات-مخصصة-لروابط-التصفيح)
+* [متغيرات قالب مخصصة](#متغيرات-قالب-مخصصة)
 
 ------------------------------------------
 
@@ -16,99 +18,125 @@
 
 
 
-### Better way to create dropdown menus
+### طريقة أحسن لإنشاء قوائم منسدلة
+
+<div dir="ltr">
+
 ```php 
-# controller
+# بملف المتحكم
 $categories = Category::lists('title', 'id');
 
-# somewhere in your view 
+# بملف العرض
 {{ Form::select('category', $categories) }}
 ```
+
+</div>
+
 ------------------------------------------
 
 
 
 
 
-### loops varriables
+### متغيرات الحلقات
+
+<div dir="ltr">
+
 ```php 
 @foreach($items as $item)
 <tr>
-  <td> a unique number per this row is : {{$loop->iteration}} </td>
-  <td> @if($loop->first) thats the first item @endif </td>
-  <td> @if($loop->last) thats the last item @endif </td>
+  <td> معرف فريد يخص هذا الصف هو: : {{$loop->iteration}} </td>
+  <td> @if($loop->first) هذا هو الصف الاول @endif </td>
+  <td> @if($loop->last) هذا هو الصف الاخير @endif </td>
 </tr>  
 @endforeach
 ```
+
+</div>
+
 ------------------------------------------
 
 
 
 
 
-### Easy and cleaner HTML codes with Laravel HTML generator
+### شيفرة أنظف مع مولد الـ HTML
+
+<div dir="ltr">
+
 ```php 
-# Generating a link to external Javascript
+# توليد وسم رابط ملف جافاسكربت خارجي
 {{ HTML::script('js/app.min.js'); }}
 
-# Generating a link to external stylesheet
+# توليد وسم رابط تنسيقات خارجي
 {{ HTML::style('css/style.css'); }}
 
-# Generating image tag
+# توليد وسم صورة
 {{ HTML::image('img/img1.jpg'); }}
 
-# Generating link tag
+# توليد وسم رابط فائق
 {{ HTML::link('http://github.com','Lara-shorter', ['id'=>'myLink']); }}
 
 # Generating obsufscated mailto tag
 {{ HTML::mailto('myemail@mail.com','Some person', ['id'=>'myEmail']); }}
 
-# Generating HTML ordered list
+# توليد قائمة مرتبة
 {{ HTML::ol(['list item', 'list item', 'list item']); }}
 
-# Generating HTML unordered list
+# توليد قائمة غير مرتبة
 {{ HTML::ul(['list item', 'list item', 'list item']); }}
 
-# Generating HTML unordered list with nested elements
+# توليد قائمة غير مرتبة عناصرها متداخلة
 {{ HTML::ul(['list item', 'list item' => ['list item','list item'], 'list item']); }}
 ```
+
+</div>
+
 ------------------------------------------
 
 
 
-### Use forelse loops instead of foreach
+### حلقات forelse بدلا عن foreach
+
+<div dir="ltr">
+
 ```php 
 @forelse ($items as $item)
 
-This is item {{ $item->id }}
+هذا هو العنصر {{ $item->id }}
 
 @empty
 
-No items found.
+لا يوجد أي عناصر
 
 @endforelse
 ```
+
+</div>
+
 ------------------------------------------
 
 
 
-### Blade directives that you did not know about
+### متغيرات قالب لا غنى لك عنها
+
+<div dir="ltr">
 
 ```php 
 # @json
     <script>
-    let users = @json($users); // convert a collection to json 
+    let users = @json($users); // تحويل مجموعة الى جيسون
     </script>
 
 # @stack & @push 
 
-    // in parent view
+    // في ملف العرض الاب
     @stack('scripts') 
     
-    // in child view 
+    // في ملف العرض الابن
     @push('scripts')
     <script>
-    alert('Hey Im a stacked Script!');
+    alert('مرحبا');
     </script>
     @endpush
 
@@ -121,10 +149,16 @@ No items found.
 # @includeWhen 
     @includeWhen($someCondition ,'path\to\someview')
 ```
+
+</div>
+
 ------------------------------------------
 
 
-### Add Parameters to Pagination Links
+### اضافة معاملات مخصصة لروابط التصفيح
+
+<div dir="ltr">
+
 ```php 
 {{ $users->appends(['sort' => 'votes'])->links() }}
 
@@ -132,12 +166,20 @@ No items found.
 
 {{ $users->fragment('foo')->links() }}
 ```
+
+</div>
+
 ------------------------------------------
 
 
 
-### Custom blade directives 
-add your custom blade directive in app\providers\AppServiceProvider.php:
+### متغيرات قالب مخصصة 
+
+قم بإضافة اية متغيرات قالب مخصصة الى 
+`app\providers\AppServiceProvider.php`
+
+<div dir="ltr">
+
 ```php
 public function boot()
 {
@@ -146,8 +188,13 @@ public function boot()
     });
 } 
 ``` 
-so ,in any blade file, can use it like:
+
+</div>
+
+سيمكنك استعمالها بأي ملف عرض كـ
 ```html
 <p>  {{ @myMagicDirective(some params) }} </p>
 ```
 ------------------------------------------
+
+</div>

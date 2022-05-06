@@ -1,20 +1,23 @@
+<div dir="rtl">
+
 # shorter-lara 
-a curated list for laravel tricks & tips to write a shorter & cleaner code with laravel built-in features . 
+مجموعة من خطوات وتوجيهات لارافيل لكتابة شيفرة أنظف و أقصر بإستعمال ميزات مضمنة في لارافيل.
 
-> check the Javascript Version of this file [here](https://github.com/adnane-ka/shorter-js) .
+> قم بتفحص نسخة جافاسكربت من هذا المستودع  [هنا](https://github.com/adnane-ka/shorter-js) .
 
-##### [Laravel Eloquent](Eloquent.md)
+##### [رابط الكائنات بالعلاقات - Laravel Eloquent](Eloquent.md)
 
-##### [Blade](Blade.md)
+##### [ملفات العرض - Blade](Blade.md)
 
-##### [Query Builder](Query-Builder.md)
+##### [باني الاستعلامات - Query Builder](Query-Builder.md)
 
-##### [Routing](Routing.md)
+##### [التوجيه - Routing](Routing.md)
 
-##### [Validation](Validation.md)
+##### [التحقق - Validation](Validation.md)
 
-##### [Request](Request.md)
+##### [الطلبات - Request](Request.md)
 
-##### [Other](Other.md)
+##### [آخر - Other](Other.md)
 
-##### [Testing](https://github.com/adnane-ka/tdd-tips-in-laravel)
+##### [الإختبار - Testing](https://github.com/adnane-ka/tdd-tips-in-laravel)
+</div>

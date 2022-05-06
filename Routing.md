@@ -1,25 +1,36 @@
-[back](README.md)
+<div dir="rtl">
+
+[عودة](README.md)
 
 
-# Routing 
-* [Provide your own "404" procedure](#provide-your-own-404-procedure)
-* [Create A Custom Route File](#create-a-custom-route-file)
-* [Did you know About Route::where()](#did-you-know-about-routewhere)
-* [more convenient way for resource API](#more-convenient-way-for-resource-API)
+# التوجيه - Routing 
+* [مسار احتياطي](#مسار-احتياطي)
+* [قم بإنشاء ملف مسارات مخصص](#قم-بإنشاء-ملف-مسارات-مخصص)
+* [طريقة أفضل للتحقق من معامل مسار ما](#طريقة-أفضل-للتحقق-من-معامل-مسار-ما)
+* [متحكمات الواجهات البرمجية المصدرية](#متحكمات-الواجهات-البرمجية-المصدرية)
 
 
 ------------------------------------------
 
-### provide your own "404" procedure
+### مسار احتياطي
+
+<div dir="ltr">
+
 ```php 
 Route::fallback(function(){
   // 
 });
 ```
+
+</div>
+
 ------------------------------------------
 
 
-### Create A Custom Route File
+### قم بإنشاء ملف مسارات مخصص
+
+<div dir="ltr">
+
 ```php 
 # in App/Providers/RouteServiceProvider.php;
     
@@ -42,6 +53,9 @@ Route::fallback(function(){
         ->group(base_path('routes/admin.php'));
     }
 ```
+
+</div>
+
 ------------------------------------------
 
 
@@ -49,10 +63,13 @@ Route::fallback(function(){
 
 
 
-### Did you know About Route::where()
-Assume that you want to make sure that you're receving only integer ids passed from route . 
+### طريقة أفضل للتحقق من معامل مسار ما
 
-instead of 
+افترض أنك تريد التأكد من أنك تتلقى فقط معرفات أعداد صحيحة يتم تمريرها من المسار.
+
+بدلا عن
+<div dir="ltr">
+
 ```php 
 Route::get('/api/item/{id}' ,[ItemsController::class ,'show']);
 
@@ -71,17 +88,27 @@ class ItemsController extends Controller {
 }
 ```
 
-you can 
+</div>
+
+ستحتاج فقط
+
+<div dir="ltr">
 
 ```php 
 Route::get('/api/item/{id}' ,[ItemsController::class ,'show'])
 ->where('id', '$[0-9]+^');
 ```
+
+</div>
+
 ------------------------------------------
 
 
-### more convenient way for resource API
-instead of:
+### متحكمات الواجهات البرمجية المصدرية
+بدلا عن
+
+<div dir="ltr">
+
 ```php
 Route::resource('resourceName' ,ResourceController::class)->except([
     'show',
@@ -89,9 +116,19 @@ Route::resource('resourceName' ,ResourceController::class)->except([
     'edit'
 ]);
 ```
-you can:
+
+</div>
+
+يمكنك
+
+<div dir="ltr">
+
 ```php
 Route::apiResource('resourceName' ,ResourceController::class);
 ```
+</div>
 
 ------------------------------------------
+
+
+</div>

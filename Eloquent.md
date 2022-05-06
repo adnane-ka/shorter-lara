@@ -1,51 +1,68 @@
-[back](README.md)
+<div dir="rtl">
 
-# Laravel Eloquent 
-* [Customize model table names](#customize-model-table-names)
-* [Increments and decrements](#Increments-and-decrements)
-* [First or create](#first-or-create)
-* [Find multiple entries](#find-multiple-entries)
-* [WhereProperty and WhereNotProperty](#whereproperty-and-wherenotproperty)
-* [Replicate a row](#replicate-a-row)
-* [WhereNull and whereNotNull](#wherenull-and-wherenotnull)
-* [Insert and get ID](#insert-and-get-id)
-* [Multiple conditions](#multiple-conditions)
+[عودة](README.md)
+
+# رابط الكائنات بالعلاقات - Laravel Eloquent
+* [تخصيص جداول النماذج](#تخصيص-جداول-النماذج)
+* [التزايد والتناقص](#التزايد-والتناقص)
+* [جلب أول عنصر أو إنشاء مدخل جديد](#جلب-أول-عنصر-أو-إنشاء-مدخل-جديد)
+* [جلب مجموعة من مدخلات](#جلب-مجموعة-من-مدخلات)
+* [طريقة أقصر لتوابع Where](#طريقة-أقصر-لتوابع-Where)
+* [استنساخ صف](#استنساخ-صف)
+* [WhereNull و whereNotNull](#wherenull-و-wherenotnull)
+* [إدراج وجلب المعرف](#إدراج-وجلب-المعرف)
+* [شروط متعددة..](#شروط-متعددة)
 * [WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime](#wheredate--whereyear--wheremonth--whereday--wheretime)
-* [Get a Table's Column Names](#get-a-tables-column-names)
-* [Check if a property has been changed before](#check-if-a-property-has-been-changed-before)
-* [Get All Record but not null ones](#get-all-record-but-not-null-ones)
-* [More convenient DD](#more-convenient-dd)
-* [Prevent Updating](#prevent-updating)
-* [Retrieve Random Rows](#retrieve-random-rows)
-* [Get only rows that have child rows](#get-only-rows-that-have-child-rows)
-* [withCount](#withcount)
+* [جلب أسماء أعمدة جدول ما](#جلب-أسماء-أعمدة-جدول-ما)
+* [التحقق من ما ان تم تحديث خاصية ما](#التحقق-من-ما-ان-تم-تحديث-خاصية-ما)
+* [طريقة أقصر لاستثناء القيم الفارغة](#طريقة-أقصر-لاستثناء-القيم-الفارغة)
+* [طريقة أفضل لإستعمال dd()](#طريقة-أفضل-لإستعمال-dd)
+* [منع التحديث بشكل عام](#منع-التحديث-بشكل-عام)
+* [جلب صفوف عشوائية](#جلب-صفوف-عشوائية)
+* [جلب الصفوف التي تملك صفوفا أبناء فقط](#جلب-الصفوف-التي-تملك-صفوفا-أبناء-فقط)
+* [تعداد العناصر الأبناء](#تعداد-العناصر-الأبناء)
 
 --------------------------------------
 
 
-### customize model table names 
+### تخصيص جداول النماذج
+<div dir="ltr">
+
 ```php 
 class User extends Model
 {
     protected $table = 'users_table';
 }
 ```
+
+</div>
+
 --------------------------------------
 
 
 
-### Increments and decrements
-instead of :
+### التزايد والتناقص
+بدلا عن
+
+<div dir="ltr">
+
 ```php 
 $article = Article::find($article_id);
 $article->read_count++;
 $article->save();
 ```
-you can :
+</div>
+
+يمكنك
+
+<div dir="ltr">
+
 ```php 
 $article = Article::find($article_id);
 $article->increment('read_count');
 ```
+</div>
+
 --------------------------------------
 
 
@@ -53,8 +70,11 @@ $article->increment('read_count');
 
 
 
-### first or create 
-instead of : 
+### جلب أول عنصر أو إنشاء مدخل جديد 
+بدلا عن
+
+<div dir="ltr">
+
 ```php 
 $user = User::where('email', $email)->first();
 if (!$user) {
@@ -63,33 +83,55 @@ if (!$user) {
   ]);
 }
 ```
-you can : 
+</div>
+
+يمكنك
+
+<div dir="ltr">
+
 ```php 
 $user = User::firstOrCreate(['email' => $email]);
 ```
+</div>
+
 --------------------------------------
 
 
-### find multiple entries 
+### جلب مجموعة من مدخلات 
+
+<div dir="ltr">
+
 ```php 
 User::find([1,2,4]);
 ```
+</div>
+
 --------------------------------------
 
 
 
-### WhereProperty and WhereNotProperty
-instead of :
+### طريقة أقصر لتوابع Where
+بدلا عن
+
+<div dir="ltr">
+
 ```php 
 User::where('approved' ,true)->get()
 # or
 User::where('approved' ,false)->get()
 ```
-you can : 
+</div>
+
+يمكنك 
+
+<div dir="ltr">
+
 ```php 
 User::whereApproved(true);
 User::whereNotApproved(true);
 ```
+</div>
+
 --------------------------------------
 
 
@@ -99,12 +141,17 @@ User::whereNotApproved(true);
 
 
 
-### Replicate a row
+### استنساخ صف 
+
+<div dir="ltr">
+
 ```php 
 $task = Tasks::find(1);
 $newTask = $task->replicate();
 $newTask->save();
 ```
+</div>
+
 --------------------------------------
 
 
@@ -114,17 +161,28 @@ $newTask->save();
 
 
 
-### WhereNull and whereNotNull
-instead of :
+### WhereNull و whereNotNull
+بدلا عن
+
+<div dir="ltr">
+
 ```php
 $article = Article::where('tags' ,null)->get(); 
 $article = Article::where('tags' ,'!=',null)->get(); 
 ```
-you can : 
+</div>
+
+
+يمكنك 
+
+<div dir="ltr">
+
 ```php 
 $article = Article::whereNull('tags')->get();
 $article = Article::whereNotNull('tags')->get(); 
 ```
+</div>
+
 --------------------------------------
 
 
@@ -135,15 +193,23 @@ $article = Article::whereNotNull('tags')->get();
 
 
 
-### Insert and get ID
+### إدراج وجلب المعرف
+
+<div dir="ltr">
+
 ```php 
 User::insertGetId(['name' ,'jhon doe']);
 ```
+</div>
+
 --------------------------------------
 
 
 
-### Multiple conditions
+### شروط متعددة..
+
+<div dir="ltr">
+
 ```php 
 public function productsOfToday()
 {
@@ -153,6 +219,8 @@ public function productsOfToday()
     ])->get();
 }
 ```
+</div>
+
 --------------------------------------
 
 
@@ -162,18 +230,26 @@ public function productsOfToday()
 
 
 ### WhereDate , WhereYear , WhereMonth , WhereDay , WhereTime 
+
+<div dir="ltr">
+
 ```php 
 $usersOfThisYear = WhereYear('created_at' ,today()->year)->get();
 $usersOfThisMonth = WhereYear('created_at' ,today()->month)->get();
 $usersOfThisDay = WhereYear('created_at' ,today()->day)->get();
 ```
+</div>
+
 --------------------------------------
 
 
 
 
 
-### Get a Table's Column Names
+### جلب أسماء أعمدة جدول ما
+
+<div dir="ltr">
+
 ```php 
 class YourModel extends Eloquent {
     
@@ -185,42 +261,61 @@ class YourModel extends Eloquent {
     
 }
 ```
+</div>
+
 --------------------------------------
 
 
-### Check if a property has been changed before 
+### التحقق من ما ان تم تحديث خاصية ما 
+
+<div dir="ltr">
+
 ```php 
 @if($user->isDirty('email'))
-<h2> The user email was changed before ! </h2>
+<h2> تم تحديث عنوان البريد الالكتروني من قبل بالفعل ! </h2>
 @endif
 ```
+</div>
+
 --------------------------------------
 
 
 
 
 
-### Get All Record but not null ones
+### طريقة أقصر لاستثناء القيم الفارغة
+<div dir="ltr">
+
 ```php 
 $products = Products::where('is_available is null')->get();
 ```
+</div>
+
 --------------------------------------
 
 
-### More convenient DD
+### طريقة أفضل لإستعمال dd()
+
+<div dir="ltr">
+
 ```php 
-// Instead of
+// بدلا عن
 $users = User::where('name', 'Taylor')->get();
 dd($users);
-// you can 
+// يمكنك  
 $users = User::where('name', 'Taylor')->get()->dd();
 ```
+</div>
+
 --------------------------------------
 
 
 
 
-### Prevent Updating
+### منع التحديث بشكل عام
+
+<div dir="ltr">
+
 ```php 
 class Post extends Eloquent
 {
@@ -235,32 +330,53 @@ class Post extends Eloquent
 	}
 }
 ```
+</div>
+
 --------------------------------------
 
 
 
 
-### Retrieve Random Rows
+### جلب صفوف عشوائية
+
+<div dir="ltr">
+
 ```php 
 $users = User::orderByRaw('RAND()')->take(10)->get();
 ```
+</div>
+
 --------------------------------------
 
 
 
 
-### Get only rows that have child rows
+### جلب الصفوف التي تملك صفوفا أبناء فقط
+
+<div dir="ltr">
+
 ```php 
 $categories = Category::with('products')->has('products')->get();
 ```
+</div>
+
 --------------------------------------
 
 
 
-### withCount
-assuming that you want to get categories & also show products count for each category
+### تعداد العناصر الأبناء
+بفرض أنك تريد مثلا جلب مجموع منتجات كل فئة ما بجانب معلومات الفئات 
+
+
+<div dir="ltr">
+
 ```php 
-# you can simply do
+# يمكنك  
 $categories = Categories::withCount('products')->get();
 ```
+</div>
+
 --------------------------------------
+
+
+</div>

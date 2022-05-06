@@ -1,32 +1,49 @@
-[back](README.md)
+<div dir="rtl">
 
-# Other 
+[عودة](README.md)
 
-* [UUID instead of auto increment !](#uuid-instead-of-auto-increment-)
-* [Missing the old SQL way?](#missing-the-old-sql-way)
-* [Arrays as Collections !](#arrays-as-collections-)
-* [Grouped Collections](#grouped-collections)
-* [abort_if & abort_unless](#abort_if--abort_unless)
+# آخر - Other 
+
+* [معرفات فريدة بدل المتصاعدة تلقائيا](#معرفات-فريدة-بدل-المتصاعدة-تلقائيا)
+* [طريقة SQL القديمة؟](#طريقة-sql-القديمة؟)
+* [مصفوفات كتجميعات](#مصفوفات-كتجميعات)
+* [مجموعات مجمعة](#مجموعات-مجمعة)
+* [abort_if و abort_unless](#abort_if-و-abort_unless)
 
 -----------------------------------------------
 
-### UUID instead of auto increment !
+### معرفات فريدة بدل المتصاعدة تلقائيا
+
+<div dir="ltr">
+
 ```php 
 Schema::create('users', function (Blueprint $table) {
     $table->uuid('id')->unique();
 });
 ```
+
+</div>
+
 -----------------------------------------------
 
 
-### Missing the old SQL way?
+### طريقة SQL القديمة؟
+
+<div dir="ltr">
+
 ```php 
 DB::statement('DROP TABLE users');
 ```
+
+</div>
+
 -----------------------------------------------
 
 
-### Arrays as Collections !
+### مصفوفات كتجميعات
+
+<div dir="ltr">
+
 ```php 
 $users_collection = new \Illuminate\Support\Collection([
 	['name' => 'jhon doe', 'email' => 'jhondoe@doe.do'],
@@ -39,21 +56,33 @@ $users_collection = collect([
 	['name' => 'will smith', 'email' => 'willsimth@will.sm'],
 ]);
 ```
+
+</div>
+
 -----------------------------------------------
 
 
-### Grouped Collections
+### مجموعات مجمعة
+
+<div dir="ltr">
+
 ```php 
 $collection = Person::all();
 
 $grouped = $collection->groupBy('type');
 ```
+
+</div>
+
 -----------------------------------------------
 
 
 
-### abort_if & abort_unless
-instead of 
+### abort_if و abort_unless
+عوضا عن
+
+<div dir="ltr">
+
 ```php 
 if ($order) {
   abort(404);
@@ -62,10 +91,21 @@ elseif(!$order){
   abort(401);
 }
 ```
-you can 
+
+</div>
+
+يمكنك
+
+<div dir="ltr">
+
 ```php 
 abort_if($order ,404);
 
 abort_unless($order ,401);
 ```
+
+</div>
+
 -----------------------------------------------
+
+</div>
