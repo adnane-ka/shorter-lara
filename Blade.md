@@ -11,6 +11,9 @@
 * [متغيرات قالب لا غنى لك عنها](#متغيرات-قالب-لا-غنى-لك-عنها)
 * [اضافة معاملات مخصصة لروابط التصفيح](#اضافة-معاملات-مخصصة-لروابط-التصفيح)
 * [متغيرات قالب مخصصة](#متغيرات-قالب-مخصصة)
+* [متغيرات قالب جديدة تختصر الكثير](#متغيرات-قالب-جديدة-تختصر-الكثير)
+* [@parent](#parent)
+
 
 ------------------------------------------
 
@@ -195,6 +198,71 @@ public function boot()
 ```html
 <p>  {{ @myMagicDirective(some params) }} </p>
 ```
+------------------------------------------
+
+### متغيرات قالب جديدة تختصر الكثير
+<div dir="ltr">
+
+```php
+// @unless - laravel 9.x
+@unless (Auth::check())
+    لم يتم التحقق من هويتك بعد
+@endunless
+
+// @production - laravel 9.x
+@production
+    انت في بيئة الانتاج
+@endproduction
+
+// @env - laravel 9.x
+@env('testing')
+    أنت في بيئة اختبارية
+@endenv
+
+@env(['testing' ,'production'])
+    أنت في بيئة اختبارية او انتاجية
+@endenv
+
+// @each - laravel 8.x
+@each('products.product-item-view', $products, 'product') # بديل عن foreach include
+
+// @disabled, @selected, @checked - laravel 9.x
+<button type="submit" @disabled($product->isDisabled)>update</button>
+
+<select name="version">
+    @foreach ($product->versions as $version)
+        <option value="{{ $version }}" @selected(old('version') == $version)>
+            {{ $version }}
+        </option>
+    @endforeach
+</select>
+
+<input type="checkbox"
+        name="active"
+        value="active"
+        @checked(old('active', $user->active)) />        
+```
+
+</div>
+
+------------------------------------------
+
+### @parent
+
+<div dir="ltr">
+
+```php
+
+@section('modals')
+    @parent
+
+    // اضف اي محتوى تريده دون استبدال محتوى العنصر الاب
+@endsection
+
+```
+
+</div>
+
 ------------------------------------------
 
 </div>
