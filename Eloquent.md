@@ -341,9 +341,18 @@ class Post extends Eloquent
 
 <div dir="ltr">
 
+
+
 ```php 
+// بدلا عن
 $users = User::orderByRaw('RAND()')->take(10)->get();
 ```
+	
+```php 
+// يمكنك
+$users = User::inRandomOrder()->take(10)->get();
+```
+	
 </div>
 
 --------------------------------------
